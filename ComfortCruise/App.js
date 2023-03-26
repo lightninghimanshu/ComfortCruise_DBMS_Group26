@@ -10,7 +10,7 @@ import SelectDropdown from 'react-native-select-dropdown'
 
 export default function App() {
   // const [isEnabled, setIsEnabled] = useState(false)
-  const [selectedValue, setSelectedValue] = useState('Customer')
+  const [selectedValue, setSelectedValue] = useState('Driver')
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState)
   return (
     <NavigationContainer>
@@ -23,7 +23,7 @@ export default function App() {
         }}
       >
         <SelectDropdown
-          data={['Customer', 'Driver', 'Business']}
+          data={['Driver', 'Customer', 'Business']}
           onSelect={(selectedItem, index) => {
             setSelectedValue(selectedItem)
           }}
@@ -45,7 +45,7 @@ export default function App() {
               : selectedValue === 'Driver'
               ? 'Driver'
               : 'Business'}
-              {` `}Mode 
+            {` `}Mode
           </Text>
         </View>
         <View

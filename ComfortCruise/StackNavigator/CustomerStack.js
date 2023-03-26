@@ -7,9 +7,9 @@ export default function CustomerStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
+        // headerShown: false,
       }}
-      initialRouteName='SignUp'
+      initialRouteName="SignUp"
     >
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Home" component={Home} />
