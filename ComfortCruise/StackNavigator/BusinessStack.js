@@ -7,11 +7,11 @@ import AgeWiseRevenue from '../Screen/Business/AgeWiseRevenue'
 import CheckProposedBooking from '../Screen/Business/CheckProposedBooking'
 const Stack = createStackNavigator()
 
-export default function CustomerStack() {
+export default function BusinessStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        // headerShown: false,
+        headerShown: false,
       }}
       // initialRouteName='Home'
     >

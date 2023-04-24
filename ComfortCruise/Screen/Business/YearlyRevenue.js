@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 
 async function getAnalysis() {
   let response = await fetch(
-    'http://192.168.137.1:3000/YearlyRevenueOLAP',
+    'http://192.168.1.206:3000/YearlyRevenueOLAP',
     {
       method: 'GET',
       headers: {

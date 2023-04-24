@@ -22,7 +22,7 @@ delimiter |
 create trigger book_ride after Update on ride for each row
         Begin
 			Delete from proposed_booking pb
-			where NEW.Ride_Id=pb.Ride_Id And New.Status='Booked' And Old.Status!='Booked';
+			where NEW.Ride_id=pb.Ride_id And New.Status='Booked' And Old.Status!='Booked';
 end
 |
 delimiter ;
@@ -31,8 +31,8 @@ delimiter ;
 
 Create Trigger insert_into_pb after insert on ride 
 for each row
-insert into proposed_booking(Driver_Id,Ride_Id) 
-Select Driver_Id,NEW.Ride_Id from vehicle where vehicle.Type=NEW.Vehicle_Type;
+insert into proposed_booking(Driver_Id,Ride_id) 
+Select Driver_Id,NEW.Ride_id from vehicle where vehicle.Type=NEW.Vehicle_Type;
 
 Drop Trigger insert_into_pb;
 
@@ -42,19 +42,19 @@ Drop Trigger insert_into_pb;
 
 SELECT 
     SourceName,Vehicle_Type,
-    Count(Case when Month(Date)=1 then Ride_Id end) as 'January',
-    Count(Case when Month(Date)=2 then Ride_Id end) as 'February',
-    Count(Case when Month(Date)=3 then Ride_Id end) as 'March',
-    Count(Case when Month(Date)=4 then Ride_Id end) as 'April',
-    Count(Case when Month(Date)=5 then Ride_Id end) as 'May',
-	Count(Case when Month(Date)=6 then Ride_Id end) as 'June',
-	Count(Case when Month(Date)=6 then Ride_Id end) as 'June',
-	Count(Case when Month(Date)=7 then Ride_Id end) as 'July',
-	Count(Case when Month(Date)=8 then Ride_Id end) as 'August',
-	count(Case when Month(Date)=9 then Ride_Id end) as 'September',
-	Count(Case when Month(Date)=10 then Ride_Id end) as 'October',
-	count(Case when Month(Date)=11 then Ride_Id end) as 'November',
-	Count(Case when Month(Date)=12 then Ride_Id end) as 'December'
+    Count(Case when Month(Date)=1 then Ride_id end) as 'January',
+    Count(Case when Month(Date)=2 then Ride_id end) as 'February',
+    Count(Case when Month(Date)=3 then Ride_id end) as 'March',
+    Count(Case when Month(Date)=4 then Ride_id end) as 'April',
+    Count(Case when Month(Date)=5 then Ride_id end) as 'May',
+	Count(Case when Month(Date)=6 then Ride_id end) as 'June',
+	Count(Case when Month(Date)=6 then Ride_id end) as 'June',
+	Count(Case when Month(Date)=7 then Ride_id end) as 'July',
+	Count(Case when Month(Date)=8 then Ride_id end) as 'August',
+	count(Case when Month(Date)=9 then Ride_id end) as 'September',
+	Count(Case when Month(Date)=10 then Ride_id end) as 'October',
+	count(Case when Month(Date)=11 then Ride_id end) as 'November',
+	Count(Case when Month(Date)=12 then Ride_id end) as 'December'
     from ride
 group by SourceName,Vehicle_Type
 order by SourceName;

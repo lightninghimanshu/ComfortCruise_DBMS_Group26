@@ -10,15 +10,30 @@ import {
 } from 'react-native'
 import { useEffect, useState } from 'react'
 
-export default function CheckProposedBooking({ navigation }) {
+export default function PastRides({ navigation }) {
+  const [Customer_Id, setCustomer_Id] = useState('302')
   const [analysis, setAnalysis] = useState([
     {
-        Driver_Id: 'Driver ID',
-        Ride_id: 'Ride ID',
+      Ride_id: 'Ride ID',
+      Driver_name: 'Driver Name',
+      SourceName: 'Source',
+      DestnatonName: 'Destination',
+      Date: 'Date',
+      Cost: 'Cost',
+      Vehide_Type: 'Vehicle Type',
+      // Ride_ld
+      // Driver_name
+      // SourceName
+      // DestnatonName
+      // Date
+      // Cost
+      // Vehide_Type
     },
   ])
   useEffect(() => {
-    getAnalysis().then((data) => {
+    getPastRides({
+      Customer_Id,
+    }).then((data) => {
       setAnalysis([...analysis, ...data])
     })
   }, [])
@@ -27,8 +42,7 @@ export default function CheckProposedBooking({ navigation }) {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.container}>
-        <Text style={{ fontSize: 30 }}>Analysis</Text>
-        {/* <Button title="Go to Business" onPress={() => navigation.navigate('Business')} /> */}
+        <Text style={{ fontSize: 30 }}>Past Rides</Text>
         <FlatList
           data={analysis}
           style={{ margin: 10 }}
@@ -44,11 +58,16 @@ export default function CheckProposedBooking({ navigation }) {
                 gap: 10,
               }}
             >
-              <Text>{item.Driver_Id}</Text>
               <Text>{item.Ride_id}</Text>
+              <Text>{item.Driver_name}</Text>
+              <Text>{item.SourceName}</Text>
+              <Text>{item.DestnatonName}</Text>
+              <Text>{item.Date}</Text>
+              <Text>{item.Cost}</Text>
+              <Text>{item.Vehide_Type}</Text>
             </ScrollView>
           )}
-          keyExtractor={(item) => item.Driver_Id+" "+item.Ride_id}
+          keyExtractor={(item) => item.Driver_Id + ' ' + item.Ride_id}
         />
       </View>
     </View>
@@ -65,13 +84,17 @@ const styles = StyleSheet.create({
   },
 })
 
-async function getAnalysis() {
-    let response = await fetch('http://192.168.1.206:3000/CheckPropsedBooking', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    let json = await response.json()
-    return json
+async function getPastRides({ Customer_Id }) {
+  let response = await fetch('http://192.168.1.206:3000/ViewPastRides', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      Customer_Id,
+    }),
+  })
+
+  let json = await response.json()
+  return json
 }

@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import SignUp from '../Screen/Customer/SignUp'
 import Home from '../Screen/Driver/Home'
+import Nearby from '../Screen/Driver/Nearby'
+import DriverRideDetails from '../Screen/Driver/CurrentDriverRide'
 
 const Stack = createStackNavigator()
 
@@ -10,10 +11,11 @@ export default function DriverStack() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName='Home'
+      initialRouteName='DHome'
     >
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="DHome" component={Home} />
+      <Stack.Screen name="Nearby" component={Nearby} />
+      <Stack.Screen name="CurrentDriverRide" component={DriverRideDetails} />
     </Stack.Navigator>
   )
 }

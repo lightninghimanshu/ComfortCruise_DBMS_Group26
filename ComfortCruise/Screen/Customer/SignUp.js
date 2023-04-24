@@ -121,7 +121,7 @@ async function signUp({
   let Rating = 5
   let No_of_Trips = 0
   //post request to backend
-  const response = await fetch('http://192.168.137.1:3000/CustomerSignUp', {
+  const response = await fetch('http://192.168.1.206:3000/CustomerSignUp', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
